@@ -1,0 +1,456 @@
+<html><head><base href="https://websim.ai%20ADD%20MORE%20ELEMENTS">
+<title>WebSim.ai - Quantum Web Development Platform</title>
+<style>
+  :root {
+    --primary-color: #0BFF9F;
+    --secondary-color: #00FF66;
+    --text-color: #FFFFFF;
+    --background-color: #001A12;
+    --glow-color: rgba(11, 255, 159, 0.5);
+  }
+  
+  @font-face {
+    font-family: 'Quantum';
+    src: url('path-to-quantum-font.woff2') format('woff2');
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quantum', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: var(--background-color);
+  }
+  
+  .glow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, var(--glow-color), transparent 50%);
+  }
+  
+  .header {
+    background-color: rgba(0, 26, 18, 0.9);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--glow-color);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .nav {
+    display: flex;
+  }
+  
+  .nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  
+  .nav a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  
+  .nav a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px;
+    background: linear-gradient(rgba(0,26,18,0.7), rgba(0,26,18,0.7)), url('path-to-quantum-background.jpg') no-repeat center center/cover;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    background-color: rgba(0, 26, 18, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--glow-color);
+    color: var(--primary-color);
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+  }
+  
+  .cta-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+  
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--glow-color), transparent, var(--glow-color));
+    z-index: -1;
+    filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .cta-button:hover::before {
+    opacity: 1;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px var(--glow-color);
+    color: var(--primary-color);
+  }
+  
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 0 15px var(--glow-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(11, 255, 159, 0.2);
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px var(--glow-color);
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .feature-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .testimonials {
+    background-color: rgba(0, 26, 18, 0.5);
+    padding: 4rem 0;
+  }
+  
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .testimonial-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 15px var(--glow-color);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(11, 255, 159, 0.2);
+    transition: box-shadow 0.3s;
+  }
+  
+  .testimonial-card:hover {
+    box-shadow: 0 0 25px var(--glow-color);
+  }
+  
+  .testimonial-content {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-author {
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--glow-color);
+    color: var(--primary-color);
+  }
+  
+  .pricing {
+    background-color: rgba(0, 26, 18, 0.7);
+    padding: 4rem 0;
+  }
+  
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .pricing-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 0 15px var(--glow-color);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(11, 255, 159, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px var(--glow-color);
+  }
+  
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 5px var(--glow-color);
+    color: var(--primary-color);
+  }
+  
+  .pricing-card .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .pricing-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .pricing-card li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer {
+    background-color: rgba(0, 26, 18, 0.9);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 -2px 10px var(--glow-color);
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: text-shadow 0.3s;
+  }
+  
+  .footer-links a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: text-shadow 0.3s;
+  }
+  
+  .social-links a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .quantum-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.5;
+    animation: quantumPulse 5s infinite alternate;
+  }
+  
+  @keyframes quantumPulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+  
+  .stat-item {
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .footer-content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="glow"></div>
+  <header class="header">
+    <div class="header-content">
+      <a href="#" class="logo">WebSim.ai</a>
+      <nav class="nav">
+        <a href="#features">Quantum Features</a>
+        <a href="#testimonials">Success Stories</a>
+        <a href="#pricing">Quantum Plans</a>
+        <a href="#contact">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="quantum-shape"></div>
+    <div class="hero-content">
+      <h1>Quantum Leap in Web Development</h1>
+      <p>Harness the power of quantum-inspired AI for web design that defies conventional limits. Create, simulate, and deploy next-gen websites with WebSim.ai.</p>
+      <a href="#" class="cta-button">Initiate Quantum Journey</a>
+    </div>
+  </section>
+
+  <section id="features" class="container">
+    <h2 class="section-title">Quantum Capabilities</h2>
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-atom feature-icon"></i>
+        <h3>Quantum AI Design</h3>
+        <p>Leverage quantum-inspired algorithms to generate designs that adapt and evolve in real-time.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-project-diagram feature-icon"></i>
+        <h3>Entangled Testing</h3>
+        <p>Simulate user experiences across infinite parallel dimensions for comprehensive optimization.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-code-branch feature-icon"></i>
+        <h3>Superposition Coding</h3>
+        <p>Write code that exists in multiple states simultaneously, maximizing efficiency and possibilities.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-chart-line feature-icon"></i>
+        <h3>Quantum Analytics</h3>
+        <p>Gain insights from the multiverse of potential user interactions and business outcomes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2
